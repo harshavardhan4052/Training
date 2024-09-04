@@ -1,0 +1,50 @@
+package VMO2;
+ 
+import java.util.Scanner;
+import java.util.concurrent.TimeUnit;
+ 
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
+import org.openqa.selenium.chrome.ChromeDriver;
+ 
+public class VGC {
+ 
+	public static void main(String[] args) throws InterruptedException {
+		// TODO Auto-generated method stub
+		
+		System.setProperty("webdriver.chrome.driver", "C:\\Users\\kariveh\\eclipse-workspace\\CSRD\\resources\\chromedriver.exe");
+		WebDriver driver = new ChromeDriver();
+		driver.manage().window().maximize();
+		driver.manage().timeouts().implicitlyWait(20,TimeUnit.SECONDS);
+		driver.get("https://toms-e2e.vip.a.itdev.uk.pri.o2.com");
+		System.out.println("CSRD application has launched successfully");
+		//driver.findElement(By.xpath("//*[@id=\"loginAsNTUserButton\"]/div/input")).click();
+		driver.findElement(By.xpath("//div[2]/div/input")).click();
+		Thread.sleep(1000);
+		Scanner input = new Scanner(System.in);
+		System.out.println("Enter Lanid");
+		String LANID = input.nextLine();
+		driver.findElement(By.xpath("//input[@name='username']")).sendKeys(LANID);
+		driver.findElement(By.xpath("//button[@id='loginSearchUserBtn']")).click();
+		Thread.sleep(1000);
+		System.out.println("Enter Password");
+		String PASS = input.nextLine();
+		//driver.findElement(By.xpath("//input[@name='password']")).sendKeys("A85EovXK3fx4");
+		driver.findElement(By.cssSelector(("#password"))).sendKeys(PASS);
+		WebElement log1 = driver.findElement(By.xpath("//*[@id=\"appSubmitButton\"]"));
+		log1.submit();
+		Thread.sleep(1000);
+		driver.findElement(By.xpath("/html/body/div[5]/div[2]/div/div/div/div/div/div/div/div/div[2]/div/div[3]/div/form/table/tbody/tr/td/table/tbody/tr[7]/td[2]/div/table/tbody/tr/td[2]/div/div/table/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr/td/table/tbody/tr[1]/td/table/tbody/tr/td/input")).sendKeys("csrduser01+1406@gmail.com");
+		driver.findElement(By.xpath("/html/body/div[5]/div[2]/div/div/div/div/div/div/div/div/div[2]/div/div[3]/div/div[3]/div/div/div/div/div[1]/button")).click();
+		Thread.sleep(500);
+		driver.findElement(By.xpath("//p[contains(text(),'Is the caller the account holder?')]/input")).click();
+		driver.findElement(By.xpath(" //*[@id=\"it_ploicy_screen\"]")).click();
+		driver.findElement(By.xpath("//input[5]")).click();
+		driver.findElement(By.id("btnSubmit")).click();
+		//driver.quit();
+ 
+	}
+ 
+}
+ 
